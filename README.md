@@ -39,8 +39,8 @@ factual questions.
 Copy the `chiron` folder into your skills directory:
 
 ```bash
-git clone https://github.com/pdelsignore/Chiran.git
-cp -R Chiran/chiron ~/.claude/skills/
+git clone https://github.com/pdelsignore/Chiron.git
+cp -R Chiron/chiron ~/.claude/skills/
 ```
 
 For a single project, copy it into that project's `.claude/skills/` instead.
