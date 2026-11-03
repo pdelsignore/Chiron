@@ -18,6 +18,10 @@ and updates after every exchange.
   compares the learner's confidence to their actual results.
 - **Quiz and Transfer** — a cumulative mixed-format quiz, then a novel,
   unscaffolded problem shaped like the learner's real task.
+- **Illustrate** — for a concept with a real mechanism, offers an interactive
+  figure built with the [Anatomy](https://github.com/wheresryan22/anatomy)
+  skill, drawn as an object from the learner's own world, with one control
+  that becomes a practice question.
 - **Persistence** — ends each session by outputting the learner model as a
   block the learner can paste back next time.
 
@@ -40,6 +44,11 @@ cp -R Chiran/chiron ~/.claude/skills/
 ```
 
 For a single project, copy it into that project's `.claude/skills/` instead.
+
+Figures are optional. To use them, also install the
+[Anatomy](https://github.com/wheresryan22/anatomy) skill, which needs Node.js
+20.10 or later and Chrome or Chromium. Without it, Chiron describes the object
+in words instead.
 
 ### Claude.ai
 

@@ -30,6 +30,8 @@ checkpoints (end of a concept, end of a session) so they can correct it.
 - **Confidence vs. accuracy**: where their self-assessment diverges from
   their results
 - **Due for review**: concepts from earlier that should resurface, and when
+- **Figures**: any illustrations built for a concept (see Illustrate), with
+  the file path, so a returning session can open them again
 
 At the end of a session, output the learner model in full as a block the
 learner can save and paste back next time. This is how the system persists.
@@ -102,7 +104,8 @@ that tells you which concept only appeared mastered. Route back.
    fits — a cook gets a kitchen analogy, a cyclist gets a gearing analogy.
    Only when an anchor fits honestly, though: a strained analogy teaches
    the wrong structure, so if none of their anchors maps cleanly, use a
-   neutral one and say so. Keep it short — this is a starting point for practice, not a
+   neutral one and say so. Where watching a mechanism work would carry the
+   explanation, offer a figure (see Illustrate). Keep it short — this is a starting point for practice, not a
    lecture. Novices need direct explanation before they can be questioned
    productively; Socratic questioning of someone with no base model just
    produces guessing. Where the learner holds a known misconception, name
@@ -144,6 +147,46 @@ that tells you which concept only appeared mastered. Route back.
    scaffolding, go back, skip ahead, or mark the concept ready. Say what you
    decided and why, in one sentence. The learner should always know why
    they're doing what they're doing.
+
+### Illustrate: when seeing it work is the explanation
+
+Some concepts are easiest to understand by watching a mechanism move: a
+process with stages, a quantity that drives another, a system whose parts
+hand work to each other. For those, an illustration can carry the
+explanation in Instruct and give Question and Practice something to work on.
+Every illustrative SVG in a session is built with the **anatomy** skill:
+don't hand-draw ad hoc SVG diagrams, boxes and arrows.
+
+- **Only where it earns its place.** At most one figure per concept, and
+  only when the concept has a real mechanism. Skip it for definitions,
+  vocabulary, history, judgment calls and anything a sentence explains as
+  well. Most concepts won't need one.
+- **Only where it can be built.** Anatomy writes a build script and checks
+  it in headless Chrome, so it needs a working folder and Node (Claude Code
+  and similar). Where the anatomy skill isn't available or nothing can be
+  built and run, don't attempt a figure: describe the object in words
+  instead, which keeps the same idea.
+- **Offer it, don't stall the session.** A figure takes a while to build
+  (anatomy budgets up to an hour for one). Say what you'd build in one line
+  and ask whether to build it now or keep going. Always build the Figure
+  size (one mechanism, 40 to 80 parts), never a Hero or an Epic, unless the
+  learner asks.
+- **The object comes from the learner's world.** Anatomy explains an idea
+  as a real physical object; pick that object from the learner's anchors
+  where one maps honestly, under the same rule as analogies. A baker learning
+  feedback loops gets a proofing cabinet with a thermostat, not a generic
+  machine. If no anchor fits, choose a neutral object and say so.
+- **True to the concept.** The figure's readout, motion and caption come
+  from the concept's real numbers and behaviour. A figure that teaches a
+  wrong picture is worse than none.
+- **The control is the variable.** Give the figure one control that
+  changes the quantity the concept is about, so it doubles as practice:
+  "Turn the dial until the readout says 12. What did you have to change, and
+  why?"
+- **Keep it with the subject.** Save each figure in a folder named for the
+  subject (for example `chiron-figures/<subject>/<concept>/`), note the
+  path under Figures in the learner model, and open it again when that
+  concept comes up for review.
 
 ### Background: Space and Reflect
 
