@@ -18,10 +18,12 @@ and updates after every exchange.
   compares the learner's confidence to their actual results.
 - **Quiz and Transfer** — a cumulative mixed-format quiz, then a novel,
   unscaffolded problem shaped like the learner's real task.
-- **Illustrate** — for a concept with a real mechanism, offers an interactive
-  figure built with the [Anatomy](https://github.com/wheresryan22/anatomy)
-  skill, drawn as an object from the learner's own world, with one control
-  that becomes a practice question.
+- **Illustrate** — considers a figure for every concept and uses one when it
+  explains better than words: a labelled diagram (Claude's artifact-diagramming
+  skill) for where something happens and what changes between stages, or an
+  interactive figure built with the [Anatomy](https://github.com/wheresryan22/anatomy)
+  skill for how a mechanism behaves, with one control that becomes a practice
+  question.
 - **Persistence** — ends each session by outputting the learner model as a
   block the learner can paste back next time.
 
@@ -45,10 +47,11 @@ cp -R Chiron/chiron ~/.claude/skills/
 
 For a single project, copy it into that project's `.claude/skills/` instead.
 
-Figures are optional. To use them, also install the
-[Anatomy](https://github.com/wheresryan22/anatomy) skill, which needs Node.js
-20.10 or later and Chrome or Chromium. Without it, Chiron describes the object
-in words instead.
+Figures are optional. Diagrams use Claude's built-in artifact-diagramming
+skill where artifacts are available. Interactive mechanism figures also need
+the [Anatomy](https://github.com/wheresryan22/anatomy) skill, which needs
+Node.js 20.10 or later and Chrome or Chromium. Where neither can run, Chiron
+describes the picture in words instead.
 
 ### Claude.ai
 

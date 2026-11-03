@@ -30,8 +30,9 @@ checkpoints (end of a concept, end of a session) so they can correct it.
 - **Confidence vs. accuracy**: where their self-assessment diverges from
   their results
 - **Due for review**: concepts from earlier that should resurface, and when
-- **Figures**: any illustrations built for a concept (see Illustrate), with
-  the file path, so a returning session can open them again
+- **Figures**: any diagrams or figures made for a concept (see Illustrate),
+  with the file path and the skill that made it, so a returning session can
+  open them again
 
 At the end of a session, output the learner model in full as a block the
 learner can save and paste back next time. This is how the system persists.
@@ -104,8 +105,9 @@ that tells you which concept only appeared mastered. Route back.
    fits — a cook gets a kitchen analogy, a cyclist gets a gearing analogy.
    Only when an anchor fits honestly, though: a strained analogy teaches
    the wrong structure, so if none of their anchors maps cleanly, use a
-   neutral one and say so. Where watching a mechanism work would carry the
-   explanation, offer a figure (see Illustrate). Keep it short — this is a starting point for practice, not a
+   neutral one and say so. For every concept, ask whether a figure would
+   explain it better than words, and use one when it would (see
+   Illustrate). Keep it short — this is a starting point for practice, not a
    lecture. Novices need direct explanation before they can be questioned
    productively; Socratic questioning of someone with no base model just
    produces guessing. Where the learner holds a known misconception, name
@@ -148,45 +150,73 @@ that tells you which concept only appeared mastered. Route back.
    decided and why, in one sentence. The learner should always know why
    they're doing what they're doing.
 
-### Illustrate: when seeing it work is the explanation
+### Illustrate: consider a figure for every concept
 
-Some concepts are easiest to understand by watching a mechanism move: a
-process with stages, a quantity that drives another, a system whose parts
-hand work to each other. For those, an illustration can carry the
-explanation in Instruct and give Question and Practice something to work on.
-Every illustrative SVG in a session is built with the **anatomy** skill:
-don't hand-draw ad hoc SVG diagrams, boxes and arrows.
+A good figure lets the learner see what prose makes them assemble in their
+head: where something happens, what moves, what changes between two states.
+Consider one for every concept, in Instruct, and use one whenever it would
+explain the idea better than words. Two skills make them, and every
+illustration in a session comes from one of the two: don't hand-draw ad hoc
+SVG pictures.
 
-- **Only where it earns its place.** At most one figure per concept, and
-  only when the concept has a real mechanism. Skip it for definitions,
-  vocabulary, history, judgment calls and anything a sentence explains as
-  well. Most concepts won't need one.
-- **Only where it can be built.** Anatomy writes a build script and checks
-  it in headless Chrome, so it needs a working folder and Node (Claude Code
-  and similar). Where the anatomy skill isn't available or nothing can be
-  built and run, don't attempt a figure: describe the object in words
+**Pick the skill by the question the figure answers.**
+
+| The figure answers | Use | What it makes |
+|---|---|---|
+| *Where* it happens, *what* the parts are, *what changes* between stages or options | **artifact-diagramming** | A clean labelled diagram (SVG): parts, flows, stages, before and after. Quick to make. |
+| *How* a mechanism behaves: one thing drives another, a balance holds and then breaks | **anatomy** | An interactive figure of a real machine whose working is the concept, with one control. Slower to make. |
+
+A concept can use both: a diagram that shows where it happens, then an
+Anatomy figure that shows how it behaves. Insulin and blood sugar is the
+example: the pancreas, blood and cells in three stages, then a rig where
+the pump has to push harder as resistance rises.
+
+**When to use one, and when not.**
+- **Use it** when the concept has structure, a sequence, a flow, a
+  comparison or a mechanism: anything the learner would otherwise picture
+  from a paragraph.
+- **Skip it** for definitions, vocabulary, history, judgment calls, and
+  anything a sentence says as fast. A figure that only restates the text is
+  noise.
+- **At most one of each kind per concept.** Reuse a figure in Question,
+  Practice and review rather than drawing a new one.
+
+**How to bring it in without stalling the session.**
+- **A diagram can just appear** with the explanation, since it takes a few
+  minutes. Say in one line what it shows.
+- **Offer an Anatomy figure first.** It can take up to an hour, so say in
+  one line what you'd build and ask whether to build it now or keep going.
+  Build the Figure size (one mechanism, 40 to 80 parts), never a Hero or an
+  Epic, unless the learner asks.
+- **Only where it can be made.** Both write files: a diagram needs a page or
+  artifact to render in, and Anatomy also needs Node and Chrome to build and
+  check its figure (Claude Code and similar). Where a skill isn't available,
+  use the other if it fits; where neither is, describe the picture in words
   instead, which keeps the same idea.
-- **Offer it, don't stall the session.** A figure takes a while to build
-  (anatomy budgets up to an hour for one). Say what you'd build in one line
-  and ask whether to build it now or keep going. Always build the Figure
-  size (one mechanism, 40 to 80 parts), never a Hero or an Epic, unless the
-  learner asks.
-- **The object comes from the learner's world.** Anatomy explains an idea
-  as a real physical object; pick that object from the learner's anchors
-  where one maps honestly, under the same rule as analogies. A baker learning
+
+**What makes a figure worth having.**
+- **True to the concept.** Labels, numbers, readouts, motion and captions
+  come from the concept's real facts and behaviour. A figure that teaches a
+  wrong picture is worse than none. Say so in the caption when it is a
+  teaching model rather than an exact one.
+- **Show the mechanism, not its name.** A box labelled "insulin" says less
+  than the receptor it binds and the door it opens. Draw the parts the idea
+  hinges on and leave out the rest.
+- **From the learner's world, for Anatomy.** Anatomy explains an idea as a
+  real physical object; pick that object from the learner's anchors where
+  one maps honestly, under the same rule as analogies. A baker learning
   feedback loops gets a proofing cabinet with a thermostat, not a generic
   machine. If no anchor fits, choose a neutral object and say so.
-- **True to the concept.** The figure's readout, motion and caption come
-  from the concept's real numbers and behaviour. A figure that teaches a
-  wrong picture is worse than none.
-- **The control is the variable.** Give the figure one control that
-  changes the quantity the concept is about, so it doubles as practice:
-  "Turn the dial until the readout says 12. What did you have to change, and
-  why?"
+- **The control is the variable, for Anatomy.** Give the figure one control
+  that changes the quantity the concept is about, so it doubles as
+  practice: "Turn the dial until the readout says 12. What did you have to
+  change, and why?"
+- **Make it a question.** Use the figure in Question and Practice, not
+  only in Instruct: "In step 2, why is glucose still normal?"
 - **Keep it with the subject.** Save each figure in a folder named for the
   subject (for example `chiron-figures/<subject>/<concept>/`), note the
-  path under Figures in the learner model, and open it again when that
-  concept comes up for review.
+  path and which skill made it under Figures in the learner model, and open
+  it again when that concept comes up for review.
 
 ### Background: Space and Reflect
 
